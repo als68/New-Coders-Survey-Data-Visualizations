@@ -1,26 +1,4 @@
-var app = angular.module('app', ['angularModalService']);
-
-app.controller('Controller', function($scope, ModalService) {
-
-    $scope.show = function() {
-        ModalService.showModal({
-            templateUrl: 'modal.html',
-            controller: "ModalController"
-        }).then(function(modal) {
-            modal.element.modal();
-            modal.close.then(function(result) {
-                $scope.message = "You said " + result;
-            });
-        });
-    };
-
-});
-
-app.controller('ModalController', function($scope, close) {
- $scope.close = function(result) {
-  close(result, 500); // close, but give 500ms for bootstrap to animate
- };
-});
+var app = angular.module('app', []);
 
 function makeChart() {
   return (
@@ -46,7 +24,6 @@ function makeChart() {
         }
     }));
 }
-
 
 var counterApp = angular.module('counterApp', ['ui.router']);
 counterApp.config(['$stateProvider', '$urlRouterProvider',
@@ -78,7 +55,7 @@ counterApp.config(['$stateProvider', '$urlRouterProvider',
     }
   ]);
 
-counterApp.controller('counterController', ['$scope', function($scope) {
+counterApp.controller('divHideController', ['$scope', function($scope) {
     $scope.count = 0;
     $scope.loadBigFunction = function () {
       console.log('click ' + $scope.showHide);

@@ -1,13 +1,7 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
-
-// const Sequelize = require('sequelize');
-const db = require('./models');
-const PORT = 4000 || process.env.PORT;
-
-var surveydata = db.surveydata;
-
+const PORT = 4000;
 
 
 /*  MIDDLEWARE  */

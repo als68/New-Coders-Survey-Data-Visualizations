@@ -1,58 +1,56 @@
 <html ng-app="counterApp">
 <head>
   <link href="/css/styles.css" rel="stylesheet" type="text/css">
-  <link href="/c3-0.4.11/c3.css" rel="stylesheet" type="text/css">
+  <link href="/chartData/c3-0.4.11/c3.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
 
- <script src="//d3js.org/d3.v3.min.js"></script>
+ <script src="/chartData/d3-3.5.17/d3.min.js"></script>
+ <script src="/chartData/c3-0.4.11/c3.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
   <script src="/js/app.js"></script>
 </head>
-<div class="rightArrow"><img src="keyboard-right-arrow-button.png"></div>
-
-<body ng-controller="counterController" ng-app="app">
-  <h1 id="headerText">NeCo_SuDaVi</h1>
-  <div ui-view></div>
-
-
-  <div class="category"><span class="categoryTitle">BASICS</span></h3><br>
-    <div class="individualCharts"><a ui-sref="state1.list"><h4>Gender</h4><img src="male-female-hi.png"></a></div>
-    <div class="individualCharts"><a ui-sref="state1.list"><h4>Age</h4><img src="graph2.jpg"></a></div>
-    <div class="individualCharts"><a ui-sref="state1.list"><h4>Country Citizen and Country Living</h4><img src="bar-chart-horizontal.png"></a></div>
 <body ng-app="dataApp">
-  <div ng-controller="counterController">
+  <div class="rightArrow">
+    <img src="/img/keyboard-right-arrow-button.png">
+  </div>
+
+  <h1 id="headerText">NeCo_SuDaVi</h1>
+
+  <div ng-controller="divHideController">
     <button ng-click="clickToLoad()">One record from survey</button>
   </div>
+  <div class="category" ng-controller="divHideController">
+    <span class="categoryTitle" ng-show="!showHide" ng-click="loadBigFunction()">EDUCATION</span><br>
+    <div id="degreeChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Degree</h4></div>
+    <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
+    <div id="majorChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Major</h4></div>
+    <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
+    <div id="hasStudentDebtChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Has Student Debt</h4></div>
+    <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
 
-  <div class="category" ng-controller="counterController"><span class="categoryTitle">EDUCATION</span></h3><br>
+  <div class="category">
+    <span class="categoryTitle" ng-show="!showHide" ng-click="loadBigFunction()">EMPLOYMENT</span><br>
+     <div id="employmentFieldChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Employment Field</h4></div>
+     <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
 
-    <div class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Degree</h4><img src="PieChart.png"></div>
-    <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"> </div>
+     <div id="currentIncomeChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Current Income</h4></div>
+     <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
 
-    <div class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>SomethingElse</h4><img src="PieChart.png"></div>
-    <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"> </div>
+     <div id="hasChildrenChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Has Children</h4></div>
+     <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
 
-    <div class="individualCharts"><a ui-sref="state1.list"><h4>Major</h4><img src="PieChart.png"></a></div>
-    <div class="individualCharts"><a ui-sref="state1.list"><h4>Has Student Debt</h4><img src="PieChart.png"></a></div>
-  </div>
+     <div id="numOfChildrenChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4># of Children</h4></div>
+     <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
 
-<div class="category"><span class="categoryTitle">EMPLOYMENT</span></h3><br>
-  <div class="individualCharts" ng-click="ng-show = !goCats" ng-show="goCats"><h4>Degree</h4><img src="PieChart.png"></div>
-  <div id="chart" ng-show="!goCats"></div>
+     <div id="hasMortgageChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Has Mortgage</h4></div>
+     <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
 
-    <div class="individualCharts"><h4>Major</h4><img src="PieChart.png"></div>
-    <div class="individualCharts"><h4>Has Student Debt</h4><img src="PieChart.png"></div>
-    <div class="individualCharts"><h4>Degree</h4><img src="PieChart.png"></div>
-    <div class="individualCharts"><h4>Major</h4><img src="PieChart.png"></div>
-    <div class="individualCharts"><h4>Has Student Debt</h4><img src="PieChart.png"></div>
-  </div>
+     <div id="jobPreferenceChart" class="individualCharts" ng-show="!showHide" ng-click="loadBigFunction()"><h4>Job Preference</h4></div>
+     <div ng-show="showHide" ng-click="loadBigFunction()" id="chart"></div>
+  </div>
+   <script type="text/javascript" src="/js/dashboardChart.js"></script>
 
- <script type="text/javascript" src="/js/dashboardChart.js"></script>
-
-  <script src="/d3-3.5.17/d3.min.js"></script>
-  <script src="/c3-0.4.11/c3.min.js"></script>
-  <script type="text/javascript" src="chart_pie.js"></script>
-
+   <script type="text/javascript" src="/chartData/chart_pie.js"></script>
 </body>
 </html>
