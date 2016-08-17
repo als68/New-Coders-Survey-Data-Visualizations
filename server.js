@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const PORT = 4000;
 
-
 /*  MIDDLEWARE  */
 
 // for dev: logs all requests
